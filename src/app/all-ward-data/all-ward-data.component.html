@@ -1,0 +1,59 @@
+<div class="con-main">
+
+    <mat-tab-group>
+        <mat-tab label="الوارد العام">
+            <div *ngFor="let item of allData">
+                <mat-card class="example-card card5">
+                    <mat-card-header>
+                        <mat-card-title> {{item['id']}} ت</mat-card-title>
+                        <mat-card-title> {{item['ward_date']}} تاريخ الكتاب الوارد </mat-card-title>
+                        <mat-card-title> {{item['ward_date']}} رقم الكتاب</mat-card-title>
+                        <mat-card-title> {{item['ward_date']}} رقم رقم الوارد</mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <p> تاريخ الكتاب : {{item['book_date']}}</p>
+                        <p> رقم الكتاب : {{item['book_num']}}</p>
+                        <p> ترميز الكتاب : {{item['paper_code']}}</p>
+                        <p> موضوع الكتاب : {{item['book_subjects']}}</p>
+                        <p> الاجراء المتخذ : {{item['book_action']}}</p>
+                        <p> جهة االاصدار : {{item['ward_base']}}</p>
+                    </mat-card-content>
+                    <mat-card-actions>
+                        <button mat-raised-button color="primary"> <a href="{{item['file_url']}}" download=""> تنزيل
+                                الكتاب </a>
+                        </button>
+                    </mat-card-actions>
+                </mat-card>
+                <hr>
+            </div>
+        </mat-tab>
+        <mat-tab label="الوارد السري">
+            <div *ngFor="let item of allPrivateData">
+                <mat-card class="example-card card5">
+                    <mat-card-header>
+                        <mat-card-title> {{item['id']}} ت</mat-card-title>
+                        <mat-card-title> {{item['ward_date']}} تاريخ الكتاب الوارد </mat-card-title>
+                        <mat-card-title> {{item['ward_date']}} رقم الكتاب</mat-card-title>
+                        <mat-card-title> {{item['ward_date']}} رقم رقم الوارد</mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <p> تاريخ الكتاب : {{item['book_date']}}</p>
+                        <p> رقم الكتاب : {{item['book_num']}}</p>
+                        <p> ترميز الكتاب : {{item['paper_code']}}</p>
+                        <p> موضوع الكتاب : {{item['book_subjects']}}</p>
+                        <p> الاجراء المتخذ : {{item['book_action']}}</p>
+                        <p> جهة االاصدار : {{item['ward_base']}}</p>
+                    </mat-card-content>
+                    <mat-card-actions>
+                        <button mat-raised-button color="primary"> <a href="{{item['file_url']}}" download=""> تنزيل
+                                الكتاب </a>
+                        </button>
+                    </mat-card-actions>
+                </mat-card>
+                <hr>
+            </div>
+        </mat-tab>
+    </mat-tab-group>
+
+
+</div>

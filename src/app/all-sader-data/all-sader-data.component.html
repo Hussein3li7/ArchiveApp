@@ -1,0 +1,53 @@
+<div class="con-main">
+
+    <mat-tab-group>
+        <mat-tab label="الصادر العام">
+            <div *ngFor="let item of allData">
+                <mat-card class="example-card card5">
+                    <mat-card-header>
+                        <mat-card-title> {{item['id']}} ت</mat-card-title>
+                        <mat-card-title> {{item['sader_date']}} تاريخ الكتاب الصادر </mat-card-title>
+                        <mat-card-title> {{item['sader_number']}} رقم الكتاب</mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <p> ترميز الكتاب : {{item['sader_code']}}</p>
+                        <p>الملاحضات: {{item['sader_notes']}}</p>
+                        <p>موضوع الكتاب: {{item['sader_subjects']}}</p>
+                        <p>جهة االاصدار: {{item['sader_base']}}</p>
+                    </mat-card-content>
+                    <mat-card-actions>
+                        <button mat-raised-button color="primary"> <a href="{{item['sader_url']}}" download=""> تنزيل
+                                الكتاب </a>
+                        </button>
+                    </mat-card-actions>
+                </mat-card>
+                <hr>
+            </div>
+        </mat-tab>
+        <mat-tab label="الصادر السري">
+            <div *ngFor="let item of allPrivateData">
+                <mat-card class="example-card card5">
+                    <mat-card-header>
+                        <mat-card-title> {{item['id']}} ت</mat-card-title>
+                        <mat-card-title> {{item['sader_date']}} تاريخ الكتاب الصادر </mat-card-title>
+                        <mat-card-title> {{item['sader_number']}} رقم الكتاب</mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <p> ترميز الكتاب : {{item['sader_code']}}</p>
+                        <p>الملاحضات: {{item['sader_notes']}}</p>
+                        <p>موضوع الكتاب: {{item['sader_subjects']}}</p>
+                        <p>جهة االاصدار: {{item['sader_base']}}</p>
+                    </mat-card-content>
+                    <mat-card-actions>
+                        <button mat-raised-button color="primary"> <a href="{{item['sader_url']}}" download=""> تنزيل
+                                الكتاب </a>
+                        </button>
+                    </mat-card-actions>
+                </mat-card>
+                <hr>
+            </div>
+        </mat-tab>
+    </mat-tab-group>
+
+
+</div>

@@ -1,0 +1,74 @@
+<div class="con-main">
+
+    <h1>سجل الكتب الوارد في عام 2020</h1>
+
+    <div class="example-container">
+        <mat-form-field appearance="fill">
+            <mat-label>رقم الوارد</mat-label>
+            <input (input)="wardNumber($event.target.value)" matInput type="text">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>رقم الوثيقة</mat-label>
+            <input (input)="paperNumber($event.target.value)" matInput type="text">
+
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>تاريخ الوارد</mat-label>
+            <input (input)="wardDate($event.target.value)" matInput type="text">
+
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>الترميز</mat-label>
+            <input (input)="paperCode($event.target.value)" matInput type="text">
+
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>رقم الكتاب</mat-label>
+            <input (input)="bookNumber($event.target.value)" matInput type="text">
+
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>تاريخ الكتاب</mat-label>
+            <input (input)="bookDate($event.target.value)" matInput type="text">
+
+        </mat-form-field>
+    </div>
+    <hr>
+
+    <div class="example-container2">
+        <mat-form-field appearance="fill">
+            <mat-label>الاجراء المتخذ</mat-label>
+            <input (input)="paperAction($event.target.value)" matInput type="text">
+
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label> موضوع الكتاب </mat-label>
+            <input (input)="bookSubject($event.target.value)" matInput type="text">
+
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>جهة الوارد <sub>الدائرة القانونية والادارية</sub> </mat-label>
+            <input (input)="wardBase($event.target.value)" matInput type="text">
+
+        </mat-form-field>
+
+
+        <mat-form-field appearance="fill">
+            <mat-label>نوع الصادر</mat-label>
+            <mat-select>
+                <mat-option (click)="getFileType('publicWard')" value="public">صادر عام</mat-option>
+                <mat-option (click)="getFileType('privteWard')" value="privte">صادر سري </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <div class="con-Input-File">
+
+            <label for="upluadFile">اختر ملف</label>
+
+            <input type="file" name="" id="upluadFile" (change)="upluadFile($event)">
+        </div>
+    </div>
+
+    <button mat-raised-button color="primary" (click)="submitAllValue()">اضافة</button>
+
+</div>

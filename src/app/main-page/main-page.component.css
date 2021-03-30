@@ -1,0 +1,68 @@
+.example-card {
+    max-width: 400px;
+    display: inline-block;
+  }
+  
+  .toolbar {
+    width: 70%;
+    margin: 0 auto;
+    background: #f7f7f7;
+    padding: 20px;
+  }
+  
+  .TitleDiv {
+    text-align: center;
+    padding: 20;
+  
+  }
+  
+  .con-matcard  {
+    text-align: center;
+  }
+  .AllData{
+
+    text-align: center;
+  }
+  .TitleDiv p {
+    font-size: 40px;
+  }
+  
+  .card1,
+  .card2,.card3,.card4,.card5 {
+    margin: 10px;
+    display: inline-block;
+    width: 30%;
+    height: 200px;
+    color: white;
+  }
+  
+  .card1 {
+    background-color: #3f51b5; 
+  }
+  
+  .card2 {
+    background-color: #9c27b0;  
+  }
+  .card3 {
+    background-color: #009688; 
+  }
+  .card4 {
+    background-color: #ff9800; 
+  }
+  .card5 {
+    background-color: #03a9f4; 
+  }
+  
+  :host {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .mat-card-header {
+    display: inline !important;
+  }
+  
+  .selectYearDiv .example-card {
+    margin: 0 auto;
+  }

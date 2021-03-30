@@ -1,0 +1,40 @@
+ 
+.con-main{
+    width: 70%;
+    padding: 10px;
+    margin: 0 auto;
+    background-color: #f3f3f3;
+    text-align: center;
+}
+.mat-card>*{
+    text-align: right !important;  
+}
+.mat-card-header{
+    flex-direction: row-reverse;
+} 
+.example-container .mat-form-field + .mat-form-field {
+    margin-left: 18px;
+  }
+  
+  .example-right-align {
+    text-align: right;
+  }
+  
+  input.example-right-align::-webkit-outer-spin-button,
+  input.example-right-align::-webkit-inner-spin-button {
+    display: none;
+  }
+  
+  input.example-right-align {
+    -moz-appearance: textfield;
+  }
+  .example-container2{
+    padding: 10px;
+  }
+  .example-container2 .mat-form-field{
+    padding: 10px;
+  }
+  a{
+      text-decoration: none;
+      color: white;
+  }

@@ -1,0 +1,12 @@
+<div class="con-main">
+    <div class="example-container2">
+        <mat-form-field appearance="fill">
+            <mat-label>رقم الكتاب</mat-label>
+            <input (input)="getBookNumber($event.target.value)" matInput type="text">
+
+        </mat-form-field>
+
+    </div>
+
+    <button mat-raised-button color="primary" (click)="submitAllValue()">اضافة</button>
+</div>

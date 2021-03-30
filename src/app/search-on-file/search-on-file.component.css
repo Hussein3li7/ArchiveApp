@@ -1,0 +1,14 @@
+
+
+.con-main{
+  width: 70%;
+  text-align: center;
+  margin: 10px auto;
+  padding: 30px;
+}
+.example-container2{
+    padding: 10px;
+  }
+  .example-container2 .mat-form-field{
+    padding: 10px;
+  }

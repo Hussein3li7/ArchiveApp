@@ -1,0 +1,100 @@
+<div class="toolbar">
+
+    <div class="TitleDiv">
+
+        <p>الصفحة الرئيسية</p>
+
+    </div>
+
+    <div class="con-matcard">
+        <mat-card class="example-card card1">
+            <mat-card-header>
+                <mat-card-title>اضافة وارد او تعديل</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                يمكنك اضافة ملفات جديدة او التعديل على الملفات السابقة
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-button routerLink="/AddNewFile"> اضافة</button>
+            </mat-card-actions>
+        </mat-card>
+        <mat-card class="example-card card2">
+            <mat-card-header>
+                <mat-card-title>اضافة صادر او تعديل</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                يمكنك اضافة ملفات جديدة او التعديل على الملفات السابقة
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-button routerLink="/Sadir"> اضافة</button>
+            </mat-card-actions>
+        </mat-card>
+        <mat-card class="example-card card3">
+            <mat-card-header>
+                <mat-card-title>البحث عن وثيقة</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                يمكنك البحث عن اي وثيقة معينة من خلال الرقم السري بها
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-button>بحث</button>
+            </mat-card-actions>
+        </mat-card>
+
+    </div>
+
+    <hr>
+
+    <div class="AllData">
+        <mat-card class="example-card card4">
+            <mat-card-header>
+                <mat-card-title>ملفات الوارد</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                عرض جميع ملفات الوارد
+            </mat-card-content>
+            <mat-card-actions>
+                <button routerLink="/AllWard" mat-button>دخول</button>
+            </mat-card-actions>
+        </mat-card> 
+        <mat-card class="example-card card5">
+            <mat-card-header>
+                <mat-card-title>ملفات الصادر</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                عرض جميع ملفات الصادر
+            </mat-card-content>
+            <mat-card-actions>
+                <button routerLink="/AllSader" mat-button>دخول</button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+
+    <hr>
+
+    <div class="selectYearDiv" style="width: 50%;margin: 0 auto; text-align: center; ">
+        <mat-card class="example-card " style="text-align: center;">
+            <mat-card-header>
+                <mat-card-title>يرجى اختيار السنة او اضافة سنة جديدة</mat-card-title>
+            </mat-card-header>
+
+            <mat-form-field appearance="fill">
+                <mat-label>ادخل سنة جديدة</mat-label>
+                <input matInput>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>السنة</mat-label>
+                <mat-select>
+                    <mat-option value="one">2020</mat-option>
+                    <mat-option value="two">2021 </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-card-actions>
+                <button mat-button>اضافة</button>
+            </mat-card-actions>
+        </mat-card>
+
+
+    </div>
+
+</div>
