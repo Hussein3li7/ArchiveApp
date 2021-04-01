@@ -1,12 +1,23 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AddInfoServiceService } from '../service/add-info-service.service';
+import { AngularFireStorage } from '@angular/fire/storage';
+import { Observable } from 'rxjs';
+import { finalize } from 'rxjs/operators';
+
 @Component({
   selector: 'app-add-new-file',
   templateUrl: './add-new-file.component.html',
   styleUrls: ['./add-new-file.component.css']
 })
 export class AddNewFileComponent implements OnInit {
-  constructor(private service: AddInfoServiceService) { }
+  constructor(private service: AddInfoServiceService, private router: Router, private storage: AngularFireStorage) {
+    service.user.subscribe((s) => {
+      if (s == null || s == undefined) {
+        this.router.navigate(['/login'])
+      }
+    });
+  }
 
   ngOnInit(): void {
   }
@@ -36,10 +47,10 @@ export class AddNewFileComponent implements OnInit {
     fileUrl: "",
   };
 
+  uploadPercent: Observable<number>;
+  downloadURL: any;
+  file: any;
 
-  upluadFile(file: any) {
-    console.log(file.target.value);
-  }
   wardNumber(data) {
     this.ward_number = data;
   }
@@ -78,6 +89,31 @@ export class AddNewFileComponent implements OnInit {
   getFileType(fileType) {
     this.fileType = fileType;
   }
+
+  getFile(event) {
+    this.file = event;
+
+  }
+
+  upluadFile() {
+    const file = this.file.target.files[0];
+
+    const filePath = this.fileType + '/' + file['name'];
+    const fileRef = this.storage.ref(filePath);
+    const task = this.storage.upload(filePath, file);
+
+    // observe percentage changes
+    this.uploadPercent = task.percentageChanges();
+    // get notified when the download URL is available
+    task.snapshotChanges().pipe(
+      finalize(async () => {
+        this.downloadURL = await fileRef.getDownloadURL().toPromise();
+        this.allFileData.fileUrl = this.downloadURL;
+        this.submitAllValue();
+      })
+    )
+      .subscribe()
+  }
   async submitAllValue() {
     this.allFileData.ward_number = this.ward_number;
     this.allFileData.paper_number = this.paper_number;
@@ -88,9 +124,7 @@ export class AddNewFileComponent implements OnInit {
     this.allFileData.paper_action = this.paper_action;
     this.allFileData.book_subject = this.book_subject;
     this.allFileData.ward_base = this.ward_base;
-    this.allFileData.fileUrl = "Url File";
-    console.log(this.allFileData);
-
+ 
     if (this.fileType == "publicWard") {
       (await this.service.addNewFileToArchive(this.allFileData)).subscribe(s => {
         console.log(s);

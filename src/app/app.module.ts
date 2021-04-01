@@ -14,14 +14,18 @@ import { SadirComponent } from './sadir/sadir.component';
 import { AllWardDataComponent } from './all-ward-data/all-ward-data.component';
 import { AllSaderDataComponent } from './all-sader-data/all-sader-data.component'
 
+import { AngularFireModule } from '@angular/fire'; 
+import { environment } from 'src/environments/environment';
+import { LoginComponent } from './login/login.component';
 @NgModule({
   declarations: [
     AppComponent,
-    AddNewFileComponent, MainPageComponent, SearchOnFileComponent, SadirComponent, AllWardDataComponent, AllSaderDataComponent
+    AddNewFileComponent, MainPageComponent, SearchOnFileComponent, SadirComponent, AllWardDataComponent, AllSaderDataComponent, LoginComponent
 
   ],
   imports: [
     BrowserModule,
+    AngularFireModule.initializeApp(environment.firebase),
     BrowserAnimationsModule,
     BrowserAnimationsModule,
     router,

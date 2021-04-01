@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireStorage } from '@angular/fire/storage';
+import { Observable } from 'rxjs';
 import { AddInfoServiceService } from '../service/add-info-service.service';
+import { finalize } from 'rxjs/operators';
 
 @Component({
   selector: 'app-sadir',
@@ -8,7 +11,7 @@ import { AddInfoServiceService } from '../service/add-info-service.service';
 })
 export class SadirComponent implements OnInit {
 
-  constructor(private service: AddInfoServiceService) { }
+  constructor(private service: AddInfoServiceService, private storage: AngularFireStorage) { }
 
   ngOnInit(): void {
   }
@@ -34,9 +37,13 @@ export class SadirComponent implements OnInit {
     , fileUrl: ""
   };
 
+  uploadPercent: Observable<number>;
+  downloadURL: any;
+  file: any;
 
-  upluadFile(file: any) {
-    console.log(file.target.value);
+  getFile(event) {
+    this.file = event;
+
   }
   sadirNumber(data) {
     this.sadir_number = data;
@@ -65,7 +72,25 @@ export class SadirComponent implements OnInit {
   getFileType(fileType) {
     this.fileType = fileType;
   }
+  upluadFile() {
+    const file = this.file.target.files[0];
 
+    const filePath = this.fileType + '/' + file['name'];
+    const fileRef = this.storage.ref(filePath);
+    const task = this.storage.upload(filePath, file);
+
+    // observe percentage changes
+    this.uploadPercent = task.percentageChanges();
+    // get notified when the download URL is available
+    task.snapshotChanges().pipe(
+      finalize(async () => {
+        this.downloadURL = await fileRef.getDownloadURL().toPromise();
+        this.allFileData.fileUrl = this.downloadURL;
+        this.submitAllValue();
+      })
+    )
+      .subscribe()
+  }
   async submitAllValue() {
     this.allFileData.sadir_number = this.sadir_number;
     this.allFileData.sadir_date = this.sadir_date;
@@ -73,9 +98,7 @@ export class SadirComponent implements OnInit {
     this.allFileData.notes = this.notes;
     this.allFileData.sadir_subject = this.sadir_subject;
     this.allFileData.sadir_base = this.sadir_base;
-    this.allFileData.fileUrl = "Url File";
-    console.log(this.allFileData);
-
+ 
     if (this.fileType == "publicSader") {
       (await this.service.addNewFileToSader(this.allFileData)).subscribe(s => {
         console.log(s);

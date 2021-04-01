@@ -1,12 +1,86 @@
 <div class="con-main">
+
+    <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+        <mat-button-toggle (click)="showWard()">وارد</mat-button-toggle>
+        <mat-button-toggle (click)="showSader()">صادر</mat-button-toggle>
+    </mat-button-toggle-group>
+    <br>
+    <br>
+    <mat-button-toggle-group *ngIf="ShowWardType" name="fontStyle" aria-label="Font Style">
+        <mat-button-toggle (click)="gettableType('add_new_file_db')">وارد عام</mat-button-toggle>
+        <mat-button-toggle (click)="gettableType('add_new_ward_private_file_db')">وارد خاص</mat-button-toggle>
+    </mat-button-toggle-group>
+    <br>
+    <br>
+    <mat-button-toggle-group *ngIf="ShowSaderType" name="fontStyle" aria-label="Font Style">
+        <mat-button-toggle (click)="gettableType('add_sader_tb')">صادر عام</mat-button-toggle>
+        <mat-button-toggle (click)="gettableType('add_privet_sader_tb')">صادر خاص</mat-button-toggle>
+    </mat-button-toggle-group>
     <div class="example-container2">
         <mat-form-field appearance="fill">
             <mat-label>رقم الكتاب</mat-label>
-            <input (input)="getBookNumber($event.target.value)" matInput type="text">
-
+            <input (input)="getBookNumber($event.target.value)" matInput type="number">
         </mat-form-field>
-
     </div>
 
-    <button mat-raised-button color="primary" (click)="submitAllValue()">اضافة</button>
+    <br>
+
+    <div *ngIf="!ShowSaderType&&ShowWardType">
+        <div *ngFor="let item of allWardData">
+            <mat-card class="example-card card5">
+                <mat-card-header>
+                    <mat-card-title> {{item['id']}} ت</mat-card-title>
+                    <mat-card-title> {{item['ward_date']}} تاريخ الكتاب الوارد </mat-card-title>
+                    <mat-card-title> {{item['ward_date']}} رقم الكتاب</mat-card-title>
+                    <mat-card-title> {{item['ward_date']}} رقم رقم الوارد</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <p> تاريخ الكتاب : {{item['book_date']}}</p>
+                    <p> رقم الكتاب : {{item['book_num']}}</p>
+                    <p> ترميز الكتاب : {{item['paper_code']}}</p>
+                    <p> موضوع الكتاب : {{item['book_subjects']}}</p>
+                    <p> الاجراء المتخذ : {{item['book_action']}}</p>
+                    <p> جهة االاصدار : {{item['ward_base']}}</p>
+                </mat-card-content>
+                <mat-card-actions>
+                    <button mat-raised-button color="primary"> <a href="{{item['file_url']}}" download=""> تنزيل
+                            الكتاب </a>
+                    </button>
+                    <a mat-raised-button color="primary" href="{{item['file_url']}}" target="_blank" > فتح
+                        الكتاب </a> 
+                </mat-card-actions>
+            </mat-card>
+            <hr>
+        </div>
+    </div>
+
+    <br>
+
+    <div *ngIf="ShowSaderType&&!ShowWardType">
+        <div *ngFor="let item of allSaderData">
+            <mat-card class="example-card card5">
+                <mat-card-header>
+                    <mat-card-title> {{item['id']}} ت</mat-card-title>
+                    <mat-card-title> {{item['sader_date']}} تاريخ الكتاب الصادر </mat-card-title>
+                    <mat-card-title> {{item['sader_number']}} رقم الكتاب</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <p> ترميز الكتاب : {{item['sader_code']}}</p>
+                    <p>الملاحضات: {{item['sader_notes']}}</p>
+                    <p>موضوع الكتاب: {{item['sader_subjects']}}</p>
+                    <p>جهة االاصدار: {{item['sader_base']}}</p>
+                </mat-card-content>
+                <mat-card-actions>
+                    <button mat-raised-button color="primary"> <a href="{{item['sader_url']}}" download=""> تنزيل
+                            الكتاب </a>
+                    </button>
+                </mat-card-actions>
+            </mat-card>
+            <hr>
+        </div>
+    </div>
+
+
+
+    <button mat-raised-button color="primary" (click)="search()">بحث</button>
 </div>

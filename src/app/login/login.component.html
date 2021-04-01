@@ -1,0 +1,82 @@
+<div class="container">
+
+    <div class="con-main">
+ 
+        <div class="con-login-register"> 
+            <div class="login" *ngIf="showLogin">
+                <mat-spinner *ngIf="showloading"></mat-spinner>
+
+                <strong>تسجيل الدخول</strong> <br>
+
+                <br>
+                <label [ngStyle]="{color: emptyFiled ?'red':'#333'}" for="email"> الايميل </label>
+                <input (input)="getEmail($event.target.value)"  type="email" id="email" placeholder="الايميل " required>
+                <br>
+                <label [ngStyle]="{color: emptyFiled ?'red':'#333'}" for="pass"> الرمز السري</label>
+                <input (input)="getPass($event.target.value)" type="password" id="pass" placeholder="الرمز السري " required>
+                <br>
+                <small> نسيت كلمة السر؟ <strong (click)="openDialog()"> اضغط هنا </strong> </small>
+                <br>
+                <button mat-raised-button color="primary" (click)="login()"> تسجيل دخول</button>
+
+                <br>
+
+                <!-- <p> او الدخول بواسطة </p>
+
+                <div class="con-social-login-img">
+
+                    <div class="face" (click)="facebookLogin()">
+
+                    </div>
+
+                   <div class="twitter">
+                        
+                   </div>  
+
+                    <div class="google" (click)="googleLogin()">
+
+                    </div>
+ 
+                </div>
+
+            </div> -->
+                <!-- 
+            <div class="register" *ngIf="showReg">
+                <strong>انشاء حساب جديد</strong>
+                <br>
+                <span> اذا كنت تمتلك حساب مسبقاً يرجى تسجيل الدخول <strong (click)="showLoginFun()">من
+                        هنا</strong></span>
+                <br>
+
+                <mat-error>
+                    {{ netWorkErrRegister }}
+                </mat-error>
+                <mat-error *ngIf="emptyFiled2">
+                    جميع الحقول مطلوبة
+                </mat-error>
+                <mat-error *ngIf="shortPass">
+                    كلمة المرور قصيرة جداً يجب ان تكون اكثر من 6 حرف
+                </mat-error>
+
+
+                <br>
+
+
+                <label [ngStyle]="{color: emptyFiled2 ?'red':'#333'}" for="name">الاسم</label>
+                <input [(ngModel)]="registerInfo.name" id="name" type="text" placeholder="الاسم">
+                <br>
+                <label [ngStyle]="{color: emptyFiled2 ?'red':'#333'}" for="RegEmail">الايميل</label>
+                <input [(ngModel)]="registerInfo.email" id="RegEmail" type="email" placeholder="الايميل ">
+                <br>
+                <label [ngStyle]="{color: emptyFiled2 ?'red':'#333'}" for="RegPass">الرمز السري</label>
+                <input [(ngModel)]="registerInfo.pass" id="RegPass" type="password" placeholder="الرمز السري ">
+                <br>
+                <button mat-raised-button color="primary" (click)="CreateAccount()">انشاء حساب</button>
+                <br>
+
+            </div> -->
+
+            </div>
+
+        </div>
+    </div>

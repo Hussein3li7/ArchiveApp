@@ -1,12 +1,19 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AddInfoServiceService {
+  
+  user:Observable<firebase.default.User>;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private auth:AngularFireAuth) {
+    this.user=auth.user; 
+    
+   }
 
 
   addNewFileToArchive(data) {
@@ -36,5 +43,11 @@ export class AddInfoServiceService {
   getAllPrivateSaderData() {
     return this.http.get("http://localhost/ArchiveDB/ShowData/showAllPrivateSader.php");
   }
+
+  getBook(data) {
+    return this.http.post("http://localhost/ArchiveDB/ShowData/Show_book.php",data);
+  }
+
+
 
 }

@@ -1,0 +1,174 @@
+
+@media screen and (max-width:750px){
+    .conrainer , .container .con-main{
+        width: 90% !important; 
+    
+    }
+  
+    .con-login-register .login ,.con-login-register .register  {
+        width: 90% !important;
+    }
+}
+
+
+
+* :not(mat-icon){
+    font-family: 'cairo-reg'  
+}
+
+
+.container{  
+    background-image: linear-gradient(to right ,#3498db ,#ba99fa); 
+    padding-top: 30px;
+    min-height: 100vh;
+}
+
+.container .con-main{
+    width: 70%;
+    display: block;
+    margin: 0 auto;
+    text-align: center; 
+    box-shadow: inset 0px 0px 1px 0.4px rgb(116, 116, 116);
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 10px; 
+}
+  
+
+.img-logo-div{
+    width: 200px;
+    height: 200px; 
+    overflow: hidden;
+    margin: 0 auto;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+
+.con-login-register{
+    overflow: hidden;
+    min-height: 500px;
+}
+
+
+.con-login-register .login ,.con-login-register .register{
+    display: inline-flex;
+    width: 40%;
+    justify-content: center;
+    flex-direction: column;
+    padding: 20px 0;
+    margin: 10px 25px;
+    color: #fff;
+}
+ 
+.con-login-register .login ,.con-login-register .register {
+ text-align:center;
+display: block;
+width: 50%; 
+padding: 20px 0; 
+color: #333;
+margin: 10px auto;
+overflow: hidden;
+}
+ 
+.con-login-register .login {
+animation:slideInRight .4s ;
+}
+
+.con-login-register .register{
+    animation:slideInLeft .4s ;
+}
+
+
+.con-login-register .login small{
+    float: right;
+    margin-right: 3vw;
+    font-size: 10px; 
+}
+  
+form > *{
+ width: 90%;
+}
+
+.forms{
+    font-family: 'cairo-reg';
+    display: inline-block; 
+    overflow: hidden;
+}
+
+
+input {
+ 
+    padding: 12px 25px;
+    background: #e7e7e7;
+    border: none;
+    border-radius: 30px;
+    margin: 10px;
+    color: #333;
+    font-weight: bold;
+    width: 80%;
+}
+ 
+ 
+
+input:focus{
+    border: none;
+    outline: none;
+    
+}
+.login label , .register label {
+     float: right;
+    margin-right: 3vw;
+}
+ 
+strong{
+    
+    cursor: pointer;;
+
+}
+mat-spinner{
+    margin: 0 auto;
+}
+
+.con-social-login-img{
+    display: flex;
+    overflow: hidden;
+    justify-content: center;
+}
+
+ .face ,.google{
+    width: 40px;
+    height: 40px;
+    margin: 20px;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+ 
+ 
+
+/* .twitter{
+    background-image: url('file:///C:/Users/husse/Downloads/Icon/twitter.svg');
+} */
+
+
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: rgb(173, 173, 173);
+    opacity: 1; /* Firefox */
+  }
+  
+  :-ms-input-placeholder ,::-ms-input-placeholder  { /* Internet Explorer 10-11 */
+    color: rgb(173, 173, 173);
+  }
+ 
+
+
+
+
+
+
+
+
+
+

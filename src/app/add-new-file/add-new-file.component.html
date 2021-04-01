@@ -3,6 +3,18 @@
     <h1>سجل الكتب الوارد في عام 2020</h1>
 
     <div class="example-container">
+
+
+        <div>
+
+            <mat-progress-bar mode="determinate" value="{{ uploadPercent | async }}"></mat-progress-bar>
+
+
+            {{ uploadPercent | async }}
+        </div>
+
+        <br>
+
         <mat-form-field appearance="fill">
             <mat-label>رقم الوارد</mat-label>
             <input (input)="wardNumber($event.target.value)" matInput type="text">
@@ -65,10 +77,10 @@
 
             <label for="upluadFile">اختر ملف</label>
 
-            <input type="file" name="" id="upluadFile" (change)="upluadFile($event)">
+            <input type="file" name="" id="upluadFile" (change)="getFile($event)">
         </div>
     </div>
 
-    <button mat-raised-button color="primary" (click)="submitAllValue()">اضافة</button>
+    <button mat-raised-button color="primary" (click)="upluadFile()">اضافة</button>
 
 </div>
