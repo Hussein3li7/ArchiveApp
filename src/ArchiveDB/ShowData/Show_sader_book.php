@@ -6,8 +6,10 @@ include "../connections.php";
 $_POST = json_decode(file_get_contents("php://input"));
 
 @$book_number = $_POST->book_number ;  
- 
-$Query="SELECT * FROM  collages  WHERE typestu='ادبي' and  min_Avarage BETWEEN {$limiteDeg} and {$book_number}  ORDER BY  min_Avarage  DESC ";
+@$table_name = $_POST->table_name ;  
+ //$Query="SELECT * FROM `add_new_file_db` WHERE id LIKE '1%' ";
+
+$Query="SELECT * FROM {$table_name} WHERE sader_number = '{$book_number}' ORDER BY '{$book_number}' DESC ";
 $result = mysqli_query( $connect , $Query );
 $data = array();
 

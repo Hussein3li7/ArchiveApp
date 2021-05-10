@@ -1,31 +1,29 @@
-
-
-.con-main{
+.con-main {
   width: 70%;
   text-align: center;
   margin: 10px auto;
   padding: 30px;
 }
-.example-container2{
-    padding: 10px;
-  }
-  .example-container2 .mat-form-field{
-    padding: 10px;
-  }
-   
-.con-main{
+.example-container2 {
+  padding: 10px;
+}
+.example-container2 .mat-form-field {
+  padding: 10px;
+}
+
+.con-main {
   width: 70%;
   padding: 10px;
   margin: 0 auto;
-  background-color: #f3f3f3;
+  background-color: #ffffff;
   text-align: center;
 }
-.mat-card>*{
-  text-align: right !important;  
+.mat-card > * {
+  text-align: right !important;
 }
-.mat-card-header{
+.mat-card-header {
   flex-direction: row-reverse;
-} 
+}
 .example-container .mat-form-field + .mat-form-field {
   margin-left: 18px;
 }
@@ -42,13 +40,21 @@ input.example-right-align::-webkit-inner-spin-button {
 input.example-right-align {
   -moz-appearance: textfield;
 }
-.example-container2{
+.example-container2 {
   padding: 10px;
 }
-.example-container2 .mat-form-field{
+.example-container2 .mat-form-field {
   padding: 10px;
 }
-a{
-    text-decoration: none;
-    color: white;
+a {
+  text-decoration: none;
+  color: white;
+}
+.con-loading {
+  width: 100px;
+  margin: 0 auto;
+}
+.con-header-card {
+  margin: 0 auto;
+  text-align: center;
 }

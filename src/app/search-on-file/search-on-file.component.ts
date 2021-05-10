@@ -10,8 +10,13 @@ export class SearchOnFileComponent implements OnInit {
 
   ShowWardType: boolean = false;
   ShowSaderType: boolean = false;
+  showloading: boolean = false;
+  bookNumber: number;
 
   tableType: string;
+  noData: String = "";
+  wardOrSader: string = "";
+  privateOrPublich: string = "";
 
   showWard() {
     this.ShowWardType = true;
@@ -42,23 +47,49 @@ export class SearchOnFileComponent implements OnInit {
   }
 
   async search() {
-    console.log(this.data);
-    
-    if (this.ShowWardType == true && this.ShowSaderType == false) {
-      await this.service.getBook(this.data).subscribe((s) => {
-        console.log("ward Data");
+    console.log(this.ShowWardType);
+    console.log(this.ShowSaderType);
 
-        this.allWardData = s;
-        console.log(s);
-      });
-    } else if (this.ShowWardType == false && this.ShowSaderType == true) {
-      console.log("sader Data");
+    if (this.ShowSaderType == false && this.ShowWardType == false) {
+      this.wardOrSader = "يرجى تحديد نوع الكتاب صادر ام وارد";
 
-      await this.service.getBook(this.data).subscribe((s) => {
-        this.allSaderData = s;
-        console.log(s);
-      });
+    } else {
+      this.showloading = true;
+      console.log(this.data.book_number);
+      this.wardOrSader = "";
+
+      this.data.table_name = this.tableType;
+      console.log(this.data);
+      if (this.ShowWardType == true && this.ShowSaderType == false) {
+        await this.service.getWardBook(this.data).subscribe((s) => {
+          console.log("ward Data");
+          this.allWardData = s;
+          if (this.allWardData.length < 1) {
+            this.noData = "لا توجد بيانات";
+            this.showloading = false;
+          } else {
+            this.noData = "";
+            this.showloading = false;
+
+          }
+          console.log(this.allWardData.length);
+        });
+      } else if (this.ShowWardType == false && this.ShowSaderType == true) {
+        console.log("sader Data");
+
+        await this.service.getSaderBook(this.data).subscribe((s) => {
+          this.allSaderData = s;
+          if (this.allSaderData.length < 1) {
+            this.noData = "لا توجد بيانات"; this.showloading = false;
+          } else {
+            this.noData = ""; this.showloading = false;
+          }
+          console.log(this.allSaderData.length);
+        });
+      }
     }
+
+
   }
 
 
@@ -67,7 +98,7 @@ export class SearchOnFileComponent implements OnInit {
     this.data.table_name = this.tableType;
     console.log(this.data);
     if (this.ShowWardType == true && this.ShowSaderType == false) {
-      await this.service.getBook(this.data).subscribe((s) => {
+      await this.service.getWardBook(this.data).subscribe((s) => {
         console.log("ward Data");
 
         this.allWardData = s;
@@ -76,7 +107,7 @@ export class SearchOnFileComponent implements OnInit {
     } else if (this.ShowWardType == false && this.ShowSaderType == true) {
       console.log("sader Data");
 
-      await this.service.getBook(this.data).subscribe((s) => {
+      await this.service.getSaderBook(this.data).subscribe((s) => {
         this.allSaderData = s;
         console.log(s);
       });

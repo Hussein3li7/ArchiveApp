@@ -11,10 +11,10 @@ export class AllWardDataComponent implements OnInit {
 
   allData: any = [];
   allPrivateData: any = [];
-
+  showloading: boolean = false;
   constructor(private service: AddInfoServiceService, private router: Router) {
     service.user.subscribe((s) => {
-      if (s == null||s==undefined) {
+      if (s == null || s == undefined) {
         this.router.navigate(['/login'])
       }
     });
@@ -27,15 +27,23 @@ export class AllWardDataComponent implements OnInit {
   }
 
   async getData() {
+    this.showloading = true;
     await this.service.getAllWardData().subscribe((s) => {
       console.log(s);
       this.allData = s;
+      if (this.allData.length > 0) {
+        this.showloading = false;
+      }
     });
   }
   async getPrivateData() {
+    this.showloading = true;
     await this.service.getAllPrivateWardData().subscribe((s) => {
       console.log(s);
       this.allPrivateData = s;
+      if (this.allPrivateData.length > 0) {
+        this.showloading = false;
+      }
     });
   }
 }

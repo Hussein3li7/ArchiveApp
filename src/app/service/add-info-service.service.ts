@@ -7,45 +7,52 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AddInfoServiceService {
-  
-  user:Observable<firebase.default.User>;
 
-  constructor(private http: HttpClient,private auth:AngularFireAuth) {
-    this.user=auth.user; 
-    
-   }
+  user: Observable<firebase.default.User>;
 
+  constructor(private http: HttpClient, private auth: AngularFireAuth) {
+    this.user = auth.user;
+
+  }
+
+  urlData = {
+    local: "http://localhost/ArchiveDB",
+    db: "ArchiveDB",
+  }
 
   addNewFileToArchive(data) {
-    return this.http.post('http://localhost/ArchiveDB/AddData/UpluadArchiveFile.php', data);
+    return this.http.post(this.urlData.db + '/AddData/UpluadArchiveFile.php', data);
   }
   addNewPublicWardFileToArchive(data) {
-    return this.http.post('http://localhost/ArchiveDB/AddData/UpluadPrivatePublicArchiveFile.php', data);
+    return this.http.post(this.urlData.db + '/AddData/UpluadPrivatePublicArchiveFile.php', data);
   }
   addNewFileToSader(data) {
-    return this.http.post('http://localhost/ArchiveDB/AddData/UpluadSadierArchiveFile.php', data);
+    return this.http.post(this.urlData.db + '/AddData/UpluadSadierArchiveFile.php', data);
 
   }
   addNewFileToPrivateSader(data) {
-    return this.http.post('http://localhost/ArchiveDB/AddData/UpluadSadierPrivateArchiveFile.php', data);
+    return this.http.post(this.urlData.db + '/AddData/UpluadSadierPrivateArchiveFile.php', data);
 
   }
 
   getAllWardData() {
-    return this.http.get("http://localhost/ArchiveDB/ShowData/showAllPublicWard.php");
+    return this.http.get(this.urlData.db + "/ShowData/showAllPublicWard.php");
   }
   getAllPrivateWardData() {
-    return this.http.get("http://localhost/ArchiveDB/ShowData/showAllPrivateWard.php");
+    return this.http.get(this.urlData.db + "/ShowData/showAllPrivateWard.php");
   }
   getAllSaderData() {
-    return this.http.get("http://localhost/ArchiveDB/ShowData/showAllPublicSader.php");
+    return this.http.get(this.urlData.db + "/ShowData/showAllPublicSader.php");
   }
   getAllPrivateSaderData() {
-    return this.http.get("http://localhost/ArchiveDB/ShowData/showAllPrivateSader.php");
+    return this.http.get(this.urlData.db + "/ShowData/showAllPrivateSader.php");
   }
 
-  getBook(data) {
-    return this.http.post("http://localhost/ArchiveDB/ShowData/Show_book.php",data);
+  getWardBook(data) {
+    return this.http.post(this.urlData.db + "/ShowData/Show_ward_book.php", data);
+  }
+  getSaderBook(data) {
+    return this.http.post(this.urlData.db + "/ShowData/Show_sader_book.php", data);
   }
 
 

@@ -3,7 +3,7 @@
     width: 70%;
     padding: 10px;
     margin: 0 auto;
-    background-color: #f3f3f3;
+    background-color: #ffffff;
     text-align: center;
 }
 .mat-card>*{
@@ -37,4 +37,7 @@
   a{
       text-decoration: none;
       color: white;
+  }  .con-loading{
+    width: 100px;
+    margin: 0 auto;
   }

@@ -1,13 +1,12 @@
 <div class="con-main">
 
-    <h1>سجل الكتب الصادر في عام 2020</h1>
+    <h1>سجل الكتب الصادرة </h1>
 
     <div class="example-container">
 
         <div>
 
             <mat-progress-bar mode="determinate" value="{{ uploadPercent | async }}"></mat-progress-bar>
-
 
             {{ uploadPercent | async }}
         </div>
@@ -35,7 +34,7 @@
     <div class="example-container2">
         <mat-form-field appearance="fill">
             <mat-label>الملاحظات</mat-label>
-            <input (input)="paperAction($event.target.value)" matInput type="text">
+            <textarea  (input)="paperAction($event.target.value)" matInput type="text"></textarea>
 
         </mat-form-field>
         <mat-form-field appearance="fill">

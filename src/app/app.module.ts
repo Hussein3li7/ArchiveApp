@@ -13,6 +13,7 @@ import { SearchOnFileComponent } from './search-on-file/search-on-file.component
 import { SadirComponent } from './sadir/sadir.component';
 import { AllWardDataComponent } from './all-ward-data/all-ward-data.component';
 import { AllSaderDataComponent } from './all-sader-data/all-sader-data.component'
+import { FormsModule } from '@angular/forms';
 
 import { AngularFireModule } from '@angular/fire'; 
 import { environment } from 'src/environments/environment';
@@ -30,7 +31,8 @@ import { LoginComponent } from './login/login.component';
     BrowserAnimationsModule,
     router,
     MaterialModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
 
   ],
   providers: [AddInfoServiceService],

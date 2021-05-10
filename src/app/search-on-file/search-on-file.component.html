@@ -1,16 +1,19 @@
 <div class="con-main">
-
+    <h2 style="color: red;">{{wardOrSader}}</h2>
+    <br>
     <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
         <mat-button-toggle (click)="showWard()">وارد</mat-button-toggle>
         <mat-button-toggle (click)="showSader()">صادر</mat-button-toggle>
     </mat-button-toggle-group>
+
     <br>
+    <h2 style="color: red;">{{privateOrPublich}}</h2>
     <br>
     <mat-button-toggle-group *ngIf="ShowWardType" name="fontStyle" aria-label="Font Style">
         <mat-button-toggle (click)="gettableType('add_new_file_db')">وارد عام</mat-button-toggle>
         <mat-button-toggle (click)="gettableType('add_new_ward_private_file_db')">وارد خاص</mat-button-toggle>
     </mat-button-toggle-group>
-    <br>
+
     <br>
     <mat-button-toggle-group *ngIf="ShowSaderType" name="fontStyle" aria-label="Font Style">
         <mat-button-toggle (click)="gettableType('add_sader_tb')">صادر عام</mat-button-toggle>
@@ -19,20 +22,29 @@
     <div class="example-container2">
         <mat-form-field appearance="fill">
             <mat-label>رقم الكتاب</mat-label>
-            <input (input)="getBookNumber($event.target.value)" matInput type="number">
+            <input [(ngModel)]="data.book_number" matInput type="number">
         </mat-form-field>
     </div>
 
-    <br>
+    <h2 style="color: red;">{{noData}}</h2> 
+    <div class="con-loading">
 
+        <mat-spinner *ngIf="showloading"></mat-spinner>
+    </div>
+
+    <br>
+    <button mat-raised-button color="primary" (click)="search()">بحث</button>
+
+    <br>
     <div *ngIf="!ShowSaderType&&ShowWardType">
         <div *ngFor="let item of allWardData">
             <mat-card class="example-card card5">
                 <mat-card-header>
-                    <mat-card-title> {{item['id']}} ت</mat-card-title>
-                    <mat-card-title> {{item['ward_date']}} تاريخ الكتاب الوارد </mat-card-title>
-                    <mat-card-title> {{item['ward_date']}} رقم الكتاب</mat-card-title>
-                    <mat-card-title> {{item['ward_date']}} رقم رقم الوارد</mat-card-title>
+            <div class="con-header-card">
+                <mat-card-title> {{item['ward_date']}} تاريخ الوارد </mat-card-title>
+                <mat-card-title> {{item['paper_num']}} رقم الورقة</mat-card-title>
+                <mat-card-title> {{item['ward_number']}}   رقم الوارد</mat-card-title> 
+            </div>
                 </mat-card-header>
                 <mat-card-content>
                     <p> تاريخ الكتاب : {{item['book_date']}}</p>
@@ -46,22 +58,19 @@
                     <button mat-raised-button color="primary"> <a href="{{item['file_url']}}" download=""> تنزيل
                             الكتاب </a>
                     </button>
-                    <a mat-raised-button color="primary" href="{{item['file_url']}}" target="_blank" > فتح
-                        الكتاب </a> 
+                    <a mat-raised-button color="primary" href="{{item['file_url']}}" target="_blank"> فتح
+                        الكتاب </a>
                 </mat-card-actions>
             </mat-card>
             <hr>
         </div>
     </div>
 
-    <br>
-
     <div *ngIf="ShowSaderType&&!ShowWardType">
         <div *ngFor="let item of allSaderData">
             <mat-card class="example-card card5">
                 <mat-card-header>
-                    <mat-card-title> {{item['id']}} ت</mat-card-title>
-                    <mat-card-title> {{item['sader_date']}} تاريخ الكتاب الصادر </mat-card-title>
+                     <mat-card-title> {{item['sader_date']}} تاريخ الكتاب الصادر </mat-card-title>
                     <mat-card-title> {{item['sader_number']}} رقم الكتاب</mat-card-title>
                 </mat-card-header>
                 <mat-card-content>
@@ -81,6 +90,4 @@
     </div>
 
 
-
-    <button mat-raised-button color="primary" (click)="search()">بحث</button>
 </div>
