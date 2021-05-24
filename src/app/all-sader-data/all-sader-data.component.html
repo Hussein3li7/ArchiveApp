@@ -1,14 +1,14 @@
 <div class="con-main">
-    <div class="con-loading"> 
+    <div class="con-loading">
         <mat-spinner *ngIf="showloading"></mat-spinner>
     </div>
- 
+
     <mat-tab-group>
         <mat-tab label="الصادر العام">
             <div *ngFor="let item of allData">
                 <mat-card class="example-card card5">
                     <mat-card-header>
-                                                <!-- <mat-card-title> {{item['id']}} ت</mat-card-title> -->
+                        <!-- <mat-card-title> {{item['id']}} ت</mat-card-title> -->
 
                         <mat-card-title> {{item['sader_date']}} تاريخ الكتاب الصادر </mat-card-title>
                         <mat-card-title> {{item['sader_number']}} رقم الكتاب</mat-card-title>
@@ -20,9 +20,18 @@
                         <p>جهة االاصدار: {{item['sader_base']}}</p>
                     </mat-card-content>
                     <mat-card-actions>
+
+                        <button mat-raised-button color="warn" (click)="DeletePublicItem(item['id'])"> حذف
+                            الكتاب
+                        </button>
+
                         <button mat-raised-button color="primary"> <a href="{{item['sader_url']}}" download=""> تنزيل
                                 الكتاب </a>
                         </button>
+                        <a mat-raised-button color="primary" href="{{item['sader_url']}}" target="_blank"> فتح
+                            الكتاب </a>
+
+
                     </mat-card-actions>
                 </mat-card>
                 <hr>
@@ -32,7 +41,7 @@
             <div *ngFor="let item of allPrivateData">
                 <mat-card class="example-card card5">
                     <mat-card-header>
-                                                <!-- <mat-card-title> {{item['id']}} ت</mat-card-title> -->
+                        <!-- <mat-card-title> {{item['id']}} ت</mat-card-title> -->
 
                         <mat-card-title> {{item['sader_date']}} تاريخ الكتاب الصادر </mat-card-title>
                         <mat-card-title> {{item['sader_number']}} رقم الكتاب</mat-card-title>
@@ -44,9 +53,17 @@
                         <p>جهة االاصدار: {{item['sader_base']}}</p>
                     </mat-card-content>
                     <mat-card-actions>
+
+                        <button mat-raised-button color="warn" (click)="DeletePrivateItem(item['id'])"> حذف
+                            الكتاب
+                        </button>
+
                         <button mat-raised-button color="primary"> <a href="{{item['sader_url']}}" download=""> تنزيل
                                 الكتاب </a>
                         </button>
+                        <a mat-raised-button color="primary" href="{{item['sader_url']}}" target="_blank"> فتح
+                            الكتاب </a>
+
                     </mat-card-actions>
                 </mat-card>
                 <hr>

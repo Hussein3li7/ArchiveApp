@@ -1,0 +1,65 @@
+<div class="con-main">
+
+    <h1>تعديل الكتب الواردة </h1>
+
+    <div class="example-container">
+
+
+        <br>
+
+        <mat-form-field appearance="fill">
+            <mat-label>رقم الوارد</mat-label>
+            <input [(ngModel)]="allFileData.ward_number" matInput type="text">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>رقم الوثيقة</mat-label>
+            <input [(ngModel)]="allFileData.paper_number" matInput type="text">
+
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>تاريخ الوارد</mat-label>
+            <input [(ngModel)]="allFileData.ward_date" matInput type="text">
+
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>الترميز</mat-label>
+            <input [(ngModel)]="allFileData.paper_code" matInput type="text">
+
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>رقم الكتاب</mat-label>
+            <input [(ngModel)]="allFileData.book_number" matInput type="text">
+
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>تاريخ الكتاب</mat-label>
+            <input [(ngModel)]="allFileData.book_Date" matInput type="text">
+
+        </mat-form-field>
+    </div>
+    <hr>
+
+    <div class="example-container2">
+        <mat-form-field appearance="fill">
+            <mat-label>الاجراء المتخذ</mat-label>
+            <input [(ngModel)]="allFileData.paper_action" matInput type="text">
+
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label> موضوع الكتاب </mat-label>
+            <input [(ngModel)]="allFileData.book_subject" matInput type="text">
+
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>جهة الوارد <sub>الدائرة القانونية والادارية</sub> </mat-label>
+            <input [(ngModel)]="allFileData.ward_base" matInput type="text">
+
+        </mat-form-field>
+
+
+    </div>
+
+    <button mat-raised-button color="primary" (click)="Update()">تعديل</button>
+
+</div>

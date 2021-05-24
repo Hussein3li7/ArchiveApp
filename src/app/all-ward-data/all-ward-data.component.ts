@@ -11,6 +11,9 @@ export class AllWardDataComponent implements OnInit {
 
   allData: any = [];
   allPrivateData: any = [];
+  deleteDataInfo = {
+    id: '',
+  }
   showloading: boolean = false;
   constructor(private service: AddInfoServiceService, private router: Router) {
     service.user.subscribe((s) => {
@@ -45,5 +48,52 @@ export class AllWardDataComponent implements OnInit {
         this.showloading = false;
       }
     });
+  }
+  DeletePublicItem(id) {
+    this.deleteDataInfo.id = id;
+    console.log(id);
+    console.log(this.deleteDataInfo);
+    if (confirm("هل انت متاكد من حذف الكتاب")) {
+
+      this.service.deletePuplicWardItem(this.deleteDataInfo).subscribe(s => {
+
+        console.log(s);
+        if (s['sucess'] == true) {
+          alert("تم حذف الكتاب");
+          this.getData();
+        } else {
+          alert("حدث خطا اثناء حذف الكتاب");
+
+        }
+
+
+      });
+
+    }
+
+  }
+  DeletePrivateItem(id) {
+    this.deleteDataInfo.id = id;
+    console.log(id);
+    console.log(this.deleteDataInfo);
+    if (confirm("هل انت متاكد من حذف الكتاب")) {
+
+      this.service.deletePuplicWardItem(this.deleteDataInfo).subscribe(s => {
+
+        console.log(s);
+        if (s['sucess'] == true) {
+          alert("تم حذف الكتاب");
+          this.getPrivateData();
+
+        } else {
+          alert("حدث خطا اثناء حذف الكتاب");
+
+        }
+
+
+      });
+
+    }
+
   }
 }

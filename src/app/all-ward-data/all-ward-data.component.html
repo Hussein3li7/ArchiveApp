@@ -5,14 +5,12 @@
         <mat-spinner *ngIf="showloading"></mat-spinner>
     </div>
 
-
     <mat-tab-group>
         <mat-tab label="الوارد العام">
             <div *ngFor="let item of allData">
                 <mat-card class="example-card card5">
                     <mat-card-header>
                         <!-- <mat-card-title> {{item['id']}} ت</mat-card-title> -->
-
                         <mat-card-title> {{item['ward_date']}} تاريخ الكتاب الوارد </mat-card-title>
                         <mat-card-title> {{item['ward_date']}} رقم الكتاب</mat-card-title>
                         <mat-card-title> {{item['ward_date']}} رقم رقم الوارد</mat-card-title>
@@ -26,12 +24,16 @@
                         <p> جهة االاصدار : {{item['ward_base']}}</p>
                     </mat-card-content>
                     <mat-card-actions>
+                        <button mat-raised-button color="warn" (click)="DeletePublicItem(item['id'])"> حذف
+                            الكتاب
+                        </button>
                         <button mat-raised-button color="primary"> <a href="{{item['file_url']}}" download=""> تنزيل
                                 الكتاب </a>
                         </button>
 
                         <a mat-raised-button color="primary" href="{{item['file_url']}}" target="_blank"> فتح
                             الكتاب </a>
+
 
                     </mat-card-actions>
                 </mat-card>
@@ -47,7 +49,7 @@
                         <mat-card-title> {{item['ward_date']}} تاريخ الكتاب الوارد </mat-card-title>
                         <mat-card-title> {{item['ward_date']}} رقم الكتاب</mat-card-title>
                         <mat-card-title> {{item['ward_date']}} رقم رقم الوارد</mat-card-title>
-                        
+
                     </mat-card-header>
                     <mat-card-content>
                         <p> تاريخ الكتاب : {{item['book_date']}}</p>
@@ -58,6 +60,11 @@
                         <p> جهة االاصدار : {{item['ward_base']}}</p>
                     </mat-card-content>
                     <mat-card-actions>
+
+                        <button mat-raised-button color="warn" (click)="DeletePrivateItem(item['id'])"> حذف
+                            الكتاب
+                        </button>
+
                         <button mat-raised-button color="primary"> <a href="{{item['file_url']}}" download=""> تنزيل
                                 الكتاب </a>
                         </button>

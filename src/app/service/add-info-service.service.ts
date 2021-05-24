@@ -55,6 +55,26 @@ export class AddInfoServiceService {
     return this.http.post(this.urlData.db + "/ShowData/Show_sader_book.php", data);
   }
 
+  deletePuplicWardItem(id) {
+    return this.http.post(this.urlData.db + "/DeleteArchiveItem/deletePublicWardbook.php", id);
+  }
+  deletePrivateWardItem(id) {
+    return this.http.post(this.urlData.db + "/DeleteArchiveItem/deletePrivateWardbook.php", id);
+  }
+  deletePuplicSaderItem(id) {
+    return this.http.post(this.urlData.db + "/DeleteArchiveItem/deletePublicSaderbook.php", id);
+  }
+  deletePrivateSaderItem(id) {
+    return this.http.post(this.urlData.db + "/DeleteArchiveItem/deletePrivateSaderbook.php", id);
+  }
+
+  updateWardValue(data) {
+    return this.http.post(this.urlData.db + "/UpdateValue/UpdateWard.php", data);
+  }
+  updateSaderValue(data) {
+    return this.http.post(this.urlData.db + "/UpdateValue/UpdateSader.php", data);
+  }
 
 
 }
+//

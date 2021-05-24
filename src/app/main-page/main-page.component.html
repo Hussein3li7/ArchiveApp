@@ -1,5 +1,20 @@
 <div class="toolbar">
- 
+
+
+
+    <!-- Start Nav bar -->
+
+    <mat-toolbar> 
+        <span>Admin Email: {{userEmail}}</span>
+        <span class="example-spacer"></span>
+        <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+            <mat-icon (click)="logout()" >logout</mat-icon>
+        </button>
+    
+    </mat-toolbar>
+
+    <!-- End Nav Bar -->
+
     <div class="con-matcard">
         <mat-card class="example-card card1">
             <mat-card-header>
@@ -31,7 +46,7 @@
                 يمكنك البحث عن اي وثيقة معينة من خلال الرقم السري بها
             </mat-card-content>
             <mat-card-actions>
-                <button  routerLink="/Search" mat-button>بحث</button>
+                <button routerLink="/Search" mat-button>بحث</button>
             </mat-card-actions>
         </mat-card>
 
@@ -50,7 +65,7 @@
             <mat-card-actions>
                 <button routerLink="/AllWard" mat-button>دخول</button>
             </mat-card-actions>
-        </mat-card> 
+        </mat-card>
         <mat-card class="example-card card5">
             <mat-card-header>
                 <mat-card-title>ملفات الصادر</mat-card-title>

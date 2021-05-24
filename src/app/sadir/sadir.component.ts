@@ -98,7 +98,7 @@ export class SadirComponent implements OnInit {
     this.allFileData.notes = this.notes;
     this.allFileData.sadir_subject = this.sadir_subject;
     this.allFileData.sadir_base = this.sadir_base;
- 
+
     if (this.fileType == "publicSader") {
       (await this.service.addNewFileToSader(this.allFileData)).subscribe(s => {
         console.log(s);

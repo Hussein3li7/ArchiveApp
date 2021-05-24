@@ -13,16 +13,26 @@ import { SearchOnFileComponent } from './search-on-file/search-on-file.component
 import { SadirComponent } from './sadir/sadir.component';
 import { AllWardDataComponent } from './all-ward-data/all-ward-data.component';
 import { AllSaderDataComponent } from './all-sader-data/all-sader-data.component'
-import { FormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms'; 
 
 import { AngularFireModule } from '@angular/fire'; 
 import { environment } from 'src/environments/environment';
 import { LoginComponent } from './login/login.component';
+import { EditeDataComponent } from './edite-data/edite-data.component';
+import { EditeSaderDataComponent } from './edite-sader-data/edite-sader-data.component';
 @NgModule({
   declarations: [
     AppComponent,
-    AddNewFileComponent, MainPageComponent, SearchOnFileComponent, SadirComponent, AllWardDataComponent, AllSaderDataComponent, LoginComponent
-
+    AddNewFileComponent,
+     MainPageComponent,
+      SearchOnFileComponent,
+       SadirComponent,
+        AllWardDataComponent,
+         AllSaderDataComponent,
+          LoginComponent,
+          EditeDataComponent,
+          EditeSaderDataComponent
+ 
   ],
   imports: [
     BrowserModule,

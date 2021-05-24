@@ -58,3 +58,10 @@ a {
   margin: 0 auto;
   text-align: center;
 }
+mat-card {
+  background-color: #f7f7f7;
+  border-radius: 30px;
+  box-shadow: 0px 4px 12px 0px #d0cece !important;
+  padding: 30px; 
+  margin: 10px;
+}

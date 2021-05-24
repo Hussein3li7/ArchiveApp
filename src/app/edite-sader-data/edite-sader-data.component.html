@@ -1,0 +1,47 @@
+<div class="con-main">
+
+    <h1>تعديل الكتب الصادرة </h1>
+
+    <div class="example-container">
+
+
+        <mat-form-field appearance="fill">
+            <mat-label>رقم الصادر</mat-label>
+            <input  [(ngModel)]="allFileData.sadir_number" matInput type="text">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>تاريخ الصادر</mat-label>
+            <input  [(ngModel)]="allFileData.sadir_date" matInput type="text">
+
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>الترميز</mat-label>
+            <input  [(ngModel)]="allFileData.paper_code" matInput type="text">
+
+        </mat-form-field>
+    </div>
+    <hr>
+
+    <div class="example-container2">
+        <mat-form-field appearance="fill">
+            <mat-label>الملاحظات</mat-label>
+            <textarea  [(ngModel)]="allFileData.notes" matInput type="text"></textarea>
+
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label> موضوع الكتاب </mat-label>
+            <input  [(ngModel)]="allFileData.sadir_subject" matInput type="text">
+
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>جهة الصادر <sub>الدائرة القانونية والادارية</sub> </mat-label>
+            <input  [(ngModel)]="allFileData.sadir_base" matInput type="text">
+
+        </mat-form-field>
+
+    </div>
+
+    <button mat-raised-button color="primary" (click)="Update()">تعديل</button>
+
+</div>

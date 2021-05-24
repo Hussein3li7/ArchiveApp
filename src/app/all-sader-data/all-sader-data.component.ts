@@ -12,7 +12,9 @@ export class AllSaderDataComponent implements OnInit {
   allData: any = [];
   allPrivateData: any = [];
   showloading: boolean = false;
-
+  deleteDataInfo = {
+    id: '',
+  }
   constructor(private service: AddInfoServiceService, private router: Router) {
     service.user.subscribe((s) => {
       if (s == null || s == undefined) {
@@ -47,4 +49,53 @@ export class AllSaderDataComponent implements OnInit {
       }
     });
   }
+
+
+  DeletePublicItem(id) {
+    this.deleteDataInfo.id = id;
+    console.log(id);
+    console.log(this.deleteDataInfo);
+    if (confirm("هل انت متاكد من حذف الكتاب")) {
+
+      this.service.deletePuplicSaderItem(this.deleteDataInfo).subscribe(s => {
+
+        console.log(s);
+        if (s['sucess'] == true) {
+          alert("تم حذف الكتاب");
+          this.getData();
+        } else {
+          alert("حدث خطا اثناء حذف الكتاب");
+
+        }
+
+      });
+
+    }
+
+  }
+  DeletePrivateItem(id) {
+    this.deleteDataInfo.id = id;
+    console.log(id);
+    console.log(this.deleteDataInfo);
+    if (confirm("هل انت متاكد من حذف الكتاب")) {
+
+      this.service.deletePrivateSaderItem(this.deleteDataInfo).subscribe(s => {
+
+        console.log(s);
+        if (s['sucess'] == true) {
+          alert("تم حذف الكتاب");
+          this.getPrivateData();
+
+        } else {
+          alert("حدث خطا اثناء حذف الكتاب");
+
+        }
+
+
+      });
+
+    }
+
+  }
+
 }

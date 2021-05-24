@@ -1,4 +1,6 @@
+import { Route } from '@angular/compiler/src/core';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AddInfoServiceService } from '../service/add-info-service.service';
 
 @Component({
@@ -36,12 +38,16 @@ export class SearchOnFileComponent implements OnInit {
   allWardData: any = [];
   allSaderData: any = [];
 
+  deleteItemData = {
+    id: "",
+  }
+
   data = {
     book_number: '',
     table_name: '',
   }
 
-  constructor(private service: AddInfoServiceService) { }
+  constructor(private service: AddInfoServiceService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -114,5 +120,102 @@ export class SearchOnFileComponent implements OnInit {
     }
   }
 
+  DeleteItem(id) {
+
+    this.deleteItemData.id = id;
+
+    if (confirm("هل انت متاكد من الحذف")) {
+
+      if (this.ShowWardType == true && this.ShowSaderType == false) {
+        console.log("Ward");
+        if (this.tableType == "add_new_file_db") {
+          console.log("public ward");
+
+          this.service.deletePuplicWardItem(this.deleteItemData).subscribe(s => {
+            console.log(s);
+
+            if (s['sucess'] == true) {
+              this.showAlert("تم حذف الكتاب")
+              this.search();
+
+
+            } else {
+              this.showAlert("خطا الكتاب لم يحذف")
+            }
+
+          });
+
+          // publihc ward data
+        } else if (this.tableType == "add_new_ward_private_file_db") {
+          //Private ward Data
+          this.service.deletePrivateWardItem(this.deleteItemData).subscribe(s => {
+            console.log(s);
+
+            if (s['sucess'] == true) {
+              this.showAlert("تم حذف الكتاب")
+              this.search();
+
+            } else {
+              this.showAlert("خطا الكتاب لم يحذف")
+            }
+
+          });
+          console.log("Private ward");
+        }
+
+      } else if (this.ShowWardType == false && this.ShowSaderType == true) {
+        console.log("Sader");
+        if (this.tableType == "add_sader_tb") {
+          console.log("public sader");
+          this.service.deletePuplicSaderItem(this.deleteItemData).subscribe(s => {
+            console.log(s);
+
+            if (s['sucess'] == true) {
+              this.showAlert("تم حذف الكتاب")
+              this.search();
+
+            } else {
+              this.showAlert("خطا الكتاب لم يحذف")
+            }
+
+          });
+          //public sader
+        } else if (this.tableType == "add_privet_sader_tb") {
+          console.log("private sader");
+          this.service.deletePrivateSaderItem(this.deleteItemData).subscribe(s => {
+            console.log(s);
+
+            if (s['sucess'] == true) {
+              this.showAlert("تم حذف الكتاب")
+              this.search();
+
+            } else {
+              this.showAlert("خطا الكتاب لم يحذف")
+            }
+
+          });
+          //Private sader data 
+        }
+      }
+    }
+
+  }
+
+  EditeBook(id, bookNumber) {
+
+    if (this.ShowWardType == true && this.ShowSaderType == false) {
+      //edite ward Book 
+      this.router.navigate(['/EditeWardFIle/' + id + "/" + this.tableType + "/" + bookNumber]);
+
+    } else {
+      //edite Sader Book 
+      this.router.navigate(['/EditeSaderFIle/' + id + "/" + this.tableType + "/" + bookNumber]);
+    }
+
+  }
+
+  showAlert(msg: String) {
+    alert(msg);
+  }
 
 }
